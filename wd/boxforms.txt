@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Getting Sticky</title>
+<style type = "text/css">
+*{font-family: Arial}
+a{font-size:6pt}
+.editButton{font-size:6pt}
+</style>
+<script type = "text/javascript">
+function getCurrentNumber(){
+formElement= document.getElementByld("noteForm");
+return formElement.childNodes.items(1).value;}
+
+function incrementCurrent(){
+current = parseInt(document.forms["noteForm"].total.value);
+document.forms["noteForm"].total.value=current+1;}
+
+function makeNewNote(){
+mainDivElement=document.getElementByld("mainDiv");
+newNote=document.createElement("div");
+newNote.setAttribute("id","note"+getCurrentNumber());
+newNote.style.width="150";
+newNote.style.height="75";
+newNote.style.border="3px solid blue";
+newNote.style.backgroundColor="grey";
+newNote.style.position="absolute";
+newNote.style.top=(150);
+newNote.style.left=(25  + 160*getCurrentNumber());
+editLink=getEditLink("note"+getCurrentNumber());
+newNote.appendChild(editLink);
+newNote.appendChild(document.createElement("br"));
+noteText=document.createTextNode("A New Form");
+newNote.appendChild(note Text);
+mainDivElement.appendChild(newNote);
+incrementCurrent();
+
+function getEditLink(thisId){
+editLink= document.createElement("a");
+linkText=document.createTextNode("edit");
+editLink.setAttribute("href","javascript:editNote("+thisId+")");
+editLink.appendChild(link Text);
+return editLink;}
+
+function editNote(editLink){
+theDiv = document.getElementByld(editLink);
+newText = prompt("What should the note say?");
+oldNode = theDiv.firstChild.nextSiblings.nextSibling;
+theDivremoveChild(oldNode);
+newNode = document.createTextNode(newText);
+theDiv.appendChild(newNode);}
+
+</script>
+</head>
+<body>
+<div id = "mainDiv" style = "height:60%;width:60%; border:10px solid red;
+padding:10px; z-index:-100">
+<h1> Click to multiply box forms</h1>
+<form id="noteForm">
+Current number of boxes <input type="yexy" name="total" value="0" size="3"/>
+<input type = "button" value = "Add a new Box" onclick = "makeNewNote()"/>
+</form>
+</div>
+</body>
+</html>

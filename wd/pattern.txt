@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Generator</title>
+    <style>
+        pre {
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h2>Pattern Generator</h2>
+    <pre id="patternOutput"></pre>
+
+    <script>
+        function printPattern(rows) {
+            let patternOutput = '';
+            
+            // Print upper half of the pattern
+            for (let i = rows; i > 0; i--) {
+                for (let j = 0; j < i; j++) {
+                    patternOutput += '*';
+                }
+                patternOutput += '\n';
+            }
+
+            // Print lower half of the pattern
+            for (let i = 2; i <= rows; i++) {
+                for (let j = 0; j < i; j++) {
+                    patternOutput += '*';
+                }
+                patternOutput += '\n';
+            }
+
+            return patternOutput;
+        }
+
+        // Call the function with the number of rows you want in the pattern
+        let pattern = printPattern(6); // Change the argument to adjust the size of the pattern
+        document.getElementById('patternOutput').textContent = pattern;
+    </script>
+</body>
+</html>
