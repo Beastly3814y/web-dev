@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+</head>
+<body>
+    <h2>Enter 10 Numbers</h2>
+    <input type="text" id="numInput">
+    <button onclick="addNumber()">Add Number</button>
+    <br><br>
+    <button onclick="computeSum()">Compute Sum</button>
+    <button onclick="computeProduct()">Compute Product</button>
+    <br><br>
+    <div id="output"></div>
+
+    <script>
+        var nums = [];
+
+        function addNumber() {
+            var numInput = document.getElementById("numInput").value;
+            nums.push(parseFloat(numInput));
+            document.getElementById("numInput").value = '';
+        }
+
+        function computeSum() {
+            var sum = nums.reduce(function(a, b) {
+                return a + b;
+            }, 0);
+            document.getElementById("output").innerHTML = "Sum of the numbers: " + sum;
+        }
+
+        function computeProduct() {
+            var product = nums.reduce(function(a, b) {
+                return a * b;
+            }, 1);
+            document.getElementById("output").innerHTML = "Product of the numbers: " + product;
+        }
+    </script>
+</body>
+</html>
